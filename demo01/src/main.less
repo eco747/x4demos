@@ -1,0 +1,33 @@
+// out: ../dist/css/main.css, compress: true, sourceMap: false
+
+@import './reset.less';
+@import './theme.less';
+
+@def-font: sans-serif;
+@def-font-size: 12px;
+@base-color: @DARK_GRAY1;
+@selection-color: @BLUE1;
+@form-color: @base-color; 
+@focus-color: @base-color; 
+@error-color: @RED2; 
+
+@import '../x4/src/x4.less';
+
+.x-main-frame {
+	height: 100%;
+}
+
+.header {
+	height: 4rem;
+	padding: 0 8px;
+	background-color: @DARK_GRAY1;
+	color: white;
+	font-size: 2rem;
+}
+
+.footer {
+	height: 2rem;
+	padding: 0 8px;
+	background-color: @DARK_GRAY1;
+	color: white;
+}
