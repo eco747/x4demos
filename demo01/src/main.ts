@@ -7,15 +7,9 @@ import { Application, HLayout, VLayout, Label, Component,
 
 class MainFrame extends VLayout {
 
-	private m_header: HLayout;
-	private m_content: HLayout;
-	private m_footer: HLayout;
-	
 	render( ) {
-		let f, h, c;
-
 		this.setContent( [
-			h = new HLayout( {
+			new HLayout( {
 				cls: 'header center',
 				content: [
 					new Label( { 
@@ -25,12 +19,13 @@ class MainFrame extends VLayout {
 				]
 			}),
 
-			c = new Component( { 
+			new Component( { 
 				flex: 1,
 			} ),
 			
-			f = new HLayout( {
+			new HLayout( {
 				cls: 'footer center',
+				ref: 'statusbar',
 				content: [
 					new Label( { 
 						text: '',
@@ -44,16 +39,13 @@ class MainFrame extends VLayout {
 			})
 		] );
 
-		this.m_header = h;
-		this.m_content = c;
-		this.m_footer = f;
-
 		this.startTimer( 'time', 30000, true, ( ) => this._updateTime( ) );
 		this._updateTime( );
 	}
 
 	private _updateTime( ) {
-		this.m_footer.itemWithRef<Label>( 'time' ).text = formatIntlDate( new Date(), 'd o H:I' );
+		let footer = this.itemWithRef( 'statusbar' );
+		footer.itemWithRef<Label>( 'time' ).text = formatIntlDate( new Date(), 'd o H:I' );
 	}
 }
 
